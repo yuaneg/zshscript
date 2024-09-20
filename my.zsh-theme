@@ -21,26 +21,14 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}%1{✗%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
-# 获取当前 Git 分支
-git_branch() {
-    if git rev-parse --is-inside-work-tree &>/dev/null; then
-        branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-        echo "$branch"
-    fi
-}
-
 # 获取当前版本号
 get_version() {
-    if git rev-parse --is-inside-work-tree &>/dev/null; then
-        version=$(git rev-parse HEAD 2>/dev/null)
-        echo "$version"
-    fi
+    version=$(git rev-parse HEAD 2>/dev/null)
+    echo "$version"
 }
 
 # 获取最新的 commit message
 get_commit_message() {
-    if git rev-parse --is-inside-work-tree &>/dev/null; then
-        commit_msg=$(git log -1 --pretty=%B 2>/dev/null)
-        echo "$commit_msg"
-    fi
+    commit_msg=$(git log -1 --pretty=%B 2>/dev/null)
+    echo "$commit_msg"
 }
